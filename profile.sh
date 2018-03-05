@@ -22,7 +22,6 @@
 
     PROMPT_COMMAND=powerline
 
-return
 
 #	Set paths
 #	..........................................................................
@@ -30,15 +29,17 @@ return
 #	export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 	export PATH=/usr/local/sbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
 
+
 #	Set default editor
 #	..........................................................................
 	export EDITOR=/usr/bin/vim
-	[[ ! -h /usr/local/bin/subl ]] && ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/.
+	#[[ ! -h /usr/local/bin/subl ]] && ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/.
 
 #	Set default blocksize for ls, df, du
 #	from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
 #	..........................................................................
 	export BLOCKSIZE=1k
+
 
 #	------------------------
 #	02. MAKE TERMINAL BETTER
@@ -49,7 +50,12 @@ return
 	
 	. bash/aliases.bash
 
-	# GIT
+#	GIT
+#	..........................................................................
+
+	. git/prompt.bash
+
+return
 	if [ -f ~/.git-completion.bash ]; then
 	  . ~/.git-completion.bash
 	fi
