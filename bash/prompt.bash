@@ -42,13 +42,18 @@ _base() {
 
 parse_git_branch() {
 	branch=$(git branch 2>&1 | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+	diffs=($(git rev-list --left-right --count origin/${branch}..${branch}|sed 's/\s+/ /g'))
   _arrow 233 22
   _setCol 255
 	#_pad $(printf '\uf418') 
 	printf '\uf418' 
+	_setCol 208
+	printf "\uf078%d" "${diffs[0]}" 
+	_setCol 148 
+	printf "\uf077%d" "${diffs[1]}"
   _arrow 22 28
   _setCol 255 28 
-	printf "$branch" 
+	printf "$branch"
 }
 
 
