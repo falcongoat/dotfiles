@@ -1,6 +1,8 @@
 #SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 if [[ $_ != $0 ]]; then
 	SCRIPTPATH="$(dirname $BASH_SOURCE)"
+else
+	SCRIPTPATH="$(dirname $0)"
 fi 
 
 #	-----------------------------
