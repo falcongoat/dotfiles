@@ -65,7 +65,7 @@ __parse_git() {
 	local untracked=$(echo "$git_sb" | grep -E '^\?+' | wc -l)
 
 	local bg=22
-	_arrow $lastbg $bg
+	_tri_close $lastbg $bg
 	_setCol 254
 	printf "\uf418\u0020${branch}" 
 
