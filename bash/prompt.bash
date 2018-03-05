@@ -45,12 +45,13 @@ parse_git_branch() {
 	diffs=($(git rev-list --left-right --count origin/${branch}..${branch}|sed 's/\s+/ /g'))
   _arrow 233 22
   _setCol 255
-	#_pad $(printf '\uf418') 
 	printf '\uf418' 
-	_setCol 208
-	printf "\uf078%d" "${diffs[0]}" 
-	_setCol 148 
-	printf "\uf077%d" "${diffs[1]}"
+	if [[ ${diffs[0]} -gt 0 && ${diffs[1]} -gt 0 ]]; then
+		_setCol 208
+		printf "\uf078%d" "${diffs[0]}" 
+		_setCol 148 
+		printf "\uf077%d" "${diffs[1]}"
+	fi
   _arrow 22 28
   _setCol 255 28 
 	printf "$branch"
