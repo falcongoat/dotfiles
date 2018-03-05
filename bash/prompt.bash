@@ -42,19 +42,20 @@ _base() {
 
 parse_git_branch() {
 	branch=$(git branch 2>&1 | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-  _arrow 233 58
+  _arrow 233 22
   _setCol 255
-	_pad $(printf '\uf418') 
-  _pill_open 64 58
-  _setCol 255 64 
-	_pad $branch 
+	#_pad $(printf '\uf418') 
+	printf '\uf418' 
+  _arrow 22 28
+  _setCol 255 28 
+	printf "$branch" 
 }
 
 
 _tip() {
 	local bg=237
 	[[ $1 -gt 0 ]] && bg=88
-	_arrow 64 $bg
+	_arrow 28 $bg
 	_setCol 250 
 	_pad "$"
 	_arrow $bg 0
