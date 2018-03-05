@@ -1,9 +1,11 @@
-#SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 if [[ $_ != $0 ]]; then
 	SCRIPTPATH="$(dirname $BASH_SOURCE)"
 else
 	SCRIPTPATH="$(dirname $0)"
 fi 
+
+[ ! -d "/tmp/.powerline" ] && mkdir /tmp/.powerline > /dev/null
+
 
 #	-----------------------------
 #	01. ENVIRONMENT CONFIGURATION
