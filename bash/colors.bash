@@ -77,3 +77,4 @@ _echoSquare(){
 		eSeq1="\[\e[48;5;${color};38;5;0m"
 		printf '%b%3q' $eSeq1 $color;
 }
+
