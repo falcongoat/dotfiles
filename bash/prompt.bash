@@ -35,7 +35,7 @@ _userHost() {
 }
 
 _base() {
-	_pill_open 233 237
+	_pill_open 233 236
 	_setCol 244 233
 	printf "\W/"
 }

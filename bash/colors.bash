@@ -1,5 +1,9 @@
-export bold="\[\e[1m\]"
-export bold_off="\[\e[21m\]"
+export BOLD=$(tput bold)
+export DEFAULT=$(tput sgr0)
+export BLINK=$(tput blink)
+export REVERSE=$(tput smso)
+export UNDERLINE=$(tput smul)
+
 
 export black="\[\e[38;5;16m\]"
 export black_bg="\[\e[48;5;16m\]"
@@ -64,7 +68,7 @@ _colorRows() {
 _echoPill(){
 		color=$1
 		eSeq1="\e[38;5;${color};48;5;0m"
-		eSeq2="\e[38;5;0;48;5;${color}m\e[21m"
+		eSeq2="\e[38;5;0;48;5;${color}m"
 		printf '%b\uE0B6%b%3q%b\uE0B4' $eSeq1 $eSeq2 $color $eSeq1;
 }
 
