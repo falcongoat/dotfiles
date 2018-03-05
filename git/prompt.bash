@@ -1,4 +1,4 @@
-. bash/colors.bash
+. $SCRIPTPATH/bash/colors.bash
 
 __git_ps1() {
 	if [[ -d ./.git ]]; then

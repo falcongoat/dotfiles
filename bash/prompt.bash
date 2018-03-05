@@ -1,5 +1,5 @@
-. bash/colors.bash
-. git/prompt.bash
+. $SCRIPTPATH/bash/colors.bash
+. $SCRIPTPATH/git/prompt.bash
 
 powerline() {
 	local EXIT="$?"
