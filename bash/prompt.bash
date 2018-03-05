@@ -38,7 +38,7 @@ _userHost() {
 _base() {
 	_pill_open 233 236
 	_setCol 244 233
-	printf "\W/"
+	printf "\W"
 }
 
 _tip() {
