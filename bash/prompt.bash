@@ -50,6 +50,8 @@ parse_git_branch() {
 		_setCol 208
 		printf "\uf078%d" "${diffs[0]}" 
 		_setCol 148 
+		printf "\uf077%d" "${diffs[1]}" 
+	fi
 	_arrow 22 28
 	_setCol 255 28 
 	printf "$branch"
