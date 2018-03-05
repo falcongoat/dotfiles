@@ -24,10 +24,3 @@
 	ql () { qlmanage -p "$*" >& /dev/null; }    # ql:           Opens any file in MacOS Quicklook Preview
 	cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
 #	alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
-
-	# SSH
-	alias insa4sim0='ssh -p 1022 root@insa4.dyndns.org -i ~/.ssh/id_rsa_kdev'
-
-	# rsyncing
-	alias doc_sync='rsync -av --exclude=pagefile.sys /Volumes/Dokumente/ /Volumes/Bkp10-tempr/Backups/2015-03\ Synced\ Dokumente\ Partition/'
-	alias doc_restore='rsync -av --exclude=pagefile.sys /Volumes/Bkp10-tempr/Backups/2015-03\ Synced\ Dokumente\ Partition/ /Volumes/Dokumente/'
