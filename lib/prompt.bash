@@ -2,10 +2,11 @@
 
 __funkybash() {
 	local EXIT_STATUS="$?"      # This has to happen first
-	PS1="$(_pill_open $(__user) $_termBg $_userFg $_userBg)"
+	#PS1="$(_pill_open $(__user) $_termBg $_userFg $_userBg)"
+	PS1="$(_chain_inv $_pillL $(__user) $_termBg $_userFg $_userBg)"
 	PS1+=""
-	PS1+="$(_chain_arrowR $(__a) $_userBg $_atFg $_atBg)"
-	PS1+="$(_chain_arrowR $(__host) $_atBg $_hostFg $_hostBg)"
+	PS1+="$(_chain_inv $_arrow2R $(__at) $_userBg $_atFg $_atBg)"
+	PS1+="$(_chain_inv $_arrow2R $(__host) $_atBg $_hostFg $_hostBg)"
 	#PS1+="$(__user)"
 	#PS1+="$(_arrowR $UserFG2 $AtBG)"
 	#PS1+="$(__at)"
@@ -20,22 +21,22 @@ __funkybash() {
 
 #	Functions
 #	..........................................................................
-	_chain_arrowR() {
-		local element="$1"
-		local bg_old="$2"
-		local fg_new="$3"
-		local bg_new="$4"
-		printf "%b\uE0B0%b%s" "$(_setCol $bg_old $bg_new)" "$(_setCol $fg_new $bg_new)" "$element"
+	_chain() {
+		local glyph="$1"
+		local element="$2"
+		local bg_old="$3"
+		local fg_new="$4"
+		local bg_new="$5"
+		printf "%b%b%b%s" "$(_setCol $bg_old $bg_new)" "$glyph" "$(_setCol $fg_new $bg_new)" "$element"
 	}
-
-	_pill_open() {
-		local element="$1"
-		local bg_old="$2"
-		local fg_new="$3"
-		local bg_new="$4"
-		printf "%b\uE0B6%b%s" "$(_setCol $bg_new $bg_old)" "$(_setCol $fg_new $bg_new)" "$element"
+	_chain_inv() {
+		local glyph="$1"
+		local element="$2"
+		local bg_old="$3"
+		local fg_new="$4"
+		local bg_new="$5"
+		printf "%s%b%s%b" "$(_setCol $bg_new $bg_old)" "$glyph" "$(_setCol $fg_new $bg_new)" "$element"
 	}
-
 	_setCol() {
 		local fg="$(__fg $1 1)"
 		local bg="$(__bg $2 1)"
@@ -56,9 +57,10 @@ __funkybash() {
 
 #	Icons
 #	..........................................................................
-	_arrow2R() {
-		printf "%s%s\uE0D4" "$1" "$2"
-	}
+	_arrowR="\uE0B0"
+	_arrowL="\uE0B2"
+	_arrow2R="\uE0D4"
+	_pillL="\uE0B6"
 	_arrowL() {
 		printf "%b\uE0B2" "$(_setCol $1 $2)"
 	}

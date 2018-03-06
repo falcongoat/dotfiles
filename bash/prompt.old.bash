@@ -1,12 +1,5 @@
 . $SCRIPTPATH/git/prompt.bash
 
-_setCol() {
-	local col="\[\e[$(tput setaf $1)"
-	[[ $2 ]] && col+="${col}$(tput setab $2)"
-	col+="\]"
-	printf "%s" $col
-}
-
 _plTime() {
 	_pill_open 21 0
 	_setCol 254 21
