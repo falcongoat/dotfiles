@@ -71,8 +71,9 @@ __parse_git() {
 	lastbg="$_git_branchBg"
 
 	if [[ ${diffs[0]} -gt 0 || ${diffs[1]} -gt 0 ]]; then
-		_chain $_arrowR "\uf448$modified" $lastbg $_git_originFg $_git_originBg
-		lastbg="$_git_originBg"
+		_chain $_arrowR "\uf448${diffs[0]}" $lastbg $_git_originFg $_git_originBg
+		printf "\uf077%d" "${diffs[1]}"
+
 
 		#lastbg=$bg
 		#bg=28
