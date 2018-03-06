@@ -13,16 +13,6 @@ _plTime() {
 	printf "\A"
 }
 
-_userHost() {
-	_pill_open 236 21
-	_setCol 252 236
-	printf "%s" '\u'
-	_setCol 250
-	printf '@'
-	_setCol 248
-	printf '\h'
-}
-
 _base() {
 	#_pill_open 233 236
 	_tri_open 233 236
@@ -53,17 +43,5 @@ _tip() {
 
 _pad(){
 	printf "\u0020${1}\u0020"
-}
-_arrow() {
-	printf "%b\uE0B0" "$(_setCol $1 $2)"
-}
-_pill_open() {
-	printf "%b\uE0B6" "$(_setCol $1 $2)"
-}
-_tri_open() {
-	printf "%b\uE0BA" "$(_setCol $1 $2)"
-}
-_tri_close() {
-	printf "%b\uE0BC" "$(_setCol $1 $2)"
 }
 
