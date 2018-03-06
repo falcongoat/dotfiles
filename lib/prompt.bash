@@ -8,12 +8,13 @@ __funkybash() {
 	PS1+="$(__at)"
 	PS1+="$(_arrowR $AtFG2 $HostBG)"
 	PS1+="$(__host)"
+	PS1+="$(_arrowR $HostFG2 $BLACKB)"
 	#PS1+=$(_plTime)
 	#PS1+=$(_userHost)
 	#PS1+=$(_base)
 	#PS1+=$(__git_ps1 233 237)
 	#PS1+=$(_tip $EXIT)
-	PS1+=$DEFAULT
+	PS1+="\[\e$DEFAULT\]"
 }
 
 #	Functions

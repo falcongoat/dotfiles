@@ -9,13 +9,14 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 	export STANDOFF=$(tput rmso)
 
 #	Text colors
-
+	export BLACKF="$(tput setaf 16)"
+	export BLACKB="$(tput setab 16)"
 
 #	FUNCTIONS
 #	.........................
 #	Opening/Closing escape sequencess
-_eO="\["
-_eC="\]"
+_eO='\[\e'
+_eC='\]'
 
 __fg() {
 	local format="%s"
@@ -30,6 +31,6 @@ __bg() {
 }
 
 __esc() {
-	local format=$1
+	local format="$1"
 	printf "${_eO}%q${_eC}" "$format"
 }
