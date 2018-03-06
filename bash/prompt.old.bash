@@ -15,7 +15,3 @@ _tip() {
 	_arrow $bg 0
 }
 
-_pad(){
-	printf "\u0020${1}\u0020"
-}
-

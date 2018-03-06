@@ -23,6 +23,10 @@ source $SCRIPTPATH/themes/default.bash
 		local bg="$(__bg $2 1)"
 		printf "%b" "$fg$bg"
 	}
+	_pad(){
+		printf "\u0020${1}\u0020"
+	}
+
 
 #	Glyphs
 #	..........................................................................
