@@ -68,29 +68,34 @@ __parse_git() {
 	local untracked=$(echo "$git_sb" | grep -E '^\?+' | wc -l)
 
 	_chain $_arrowR "\uf418 $branch" $_pathBg $_git_branchFg $_git_branchBg
+	lastbg="$_git_branchBg"
 
-: <<'COM2'
 	if [[ ${diffs[0]} -gt 0 || ${diffs[1]} -gt 0 ]]; then
-		lastbg=$bg
-		bg=28
-		_arrow $lastbg $bg
-		_setCol 214
-		printf "\uf078%d\u0020" "${diffs[0]}"
-		_setCol 190
-		printf "\uf077%d" "${diffs[1]}"
+		_chain $_arrowR "\uf448$modified" $lastbg $_git_originFg $_git_originBg
+		lastbg="$_git_originBg"
+
+		#lastbg=$bg
+		#bg=28
+		#_arrow $lastbg $bg
+		#_setCol 214
+		#printf "\uf078%d\u0020" "${diffs[0]}"
+		#_setCol 190
+		#printf "\uf077%d" "${diffs[1]}"
 	fi
-COM2
 
 	if [[ $modified -gt 0 ]]; then
-		_chain $_arrowR "\uf448$modified" $_git_branchBg $_git_modifiedFg $_git_modifiedBg
+		_chain $_arrowR "\uf448$modified" $lastbg $_git_modifiedFg $_git_modifiedBg
+		lastbg=$_git_modifiedBg
 	fi
 
 	if [[ $untracked -gt 0 ]]; then
-		_chain $_arrowR "\uf071$untracked" $_git_modifiedBg $_git_untrackedFg $_git_untrackedBg
+		_chain $_arrowR "\uf071$untracked" $lastbg $_git_untrackedFg $_git_untrackedBg
+		lastbg=$_git_untrackedBg
 	fi
 
 	if [[ $untracked -eq 0 && $modified -eq 0 ]]; then
-		_chain $_arrowR "\uf00c" $_git_branchBg $_git_br_cleanFg $_git_br_cleanBg
+		_chain $_arrowR "\uf00c" $lastbg $_git_br_cleanFg $_git_br_cleanBg
+		lastbg=$_git_br_cleanBg
 	fi
 : <<'COM3'
 	lastbg=$bg

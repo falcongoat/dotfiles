@@ -14,6 +14,8 @@
 	_git_branchBg=22
 	_git_br_cleanFg=255
 	_git_br_cleanBg=34
+	_git_originFg=214
+	_git_originBg=28
 	_git_modifiedFg=254
 	_git_modifiedBg=58
 	_git_untrackedFg=254
