@@ -6,6 +6,8 @@ __git_ps1() {
 		which git > /dev/null
 		if [[ $? -eq 0 ]]; then
 			__parse_git $1 $2
+		else
+			printf "NO git"
 		fi
 	fi
 
@@ -44,6 +46,7 @@ __git_has_remote() {
 }
 
 __parse_git() {
+	return
 	local lastbg=${1:-233}
 	local exitbg=${2:-237}
 
