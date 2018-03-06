@@ -46,12 +46,12 @@ __git_has_remote() {
 }
 
 __parse_git() {
-	return
 	local lastbg=${1:-233}
 	local exitbg=${2:-237}
 
 	local lastbranch="$(__git_last_branch)"
 	local branch="$(git branch 2>&1 | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/g')"
+: <<'COM'
 
 	if [[ "$lastbranch" != "$branch" ]]; then
 		__git_last_branch $branch
@@ -63,16 +63,15 @@ __parse_git() {
 			__git_has_remote false
 		fi
 	fi
+COM
 
 	local git_sb=$(git status -sb --porcelain=v1 2>&1)
 	local modified=$(echo "$git_sb" | grep '^.M' | wc -l)
 	local untracked=$(echo "$git_sb" | grep -E '^\?+' | wc -l)
 
-	local bg=22
-	_tri_close $lastbg $bg
-	_setCol 254
-	printf "\uf418\u0020${branch}"
+	_chain $_arrowR "\uf418 $branch" $_pathBg $_git_branchFg $_git_branchBg
 
+: <<'COM2'
 	if [[ ${diffs[0]} -gt 0 || ${diffs[1]} -gt 0 ]]; then
 		lastbg=$bg
 		bg=28
@@ -82,32 +81,22 @@ __parse_git() {
 		_setCol 190
 		printf "\uf077%d" "${diffs[1]}"
 	fi
+COM2
 
 	if [[ $modified -gt 0 ]]; then
-		lastbg=$bg
-		bg=58
-		_arrow $lastbg $bg
-		_setCol 254
-		printf "\uf448%d" "$modified"
+		_chain $_arrowR "\uf448$modified" $_git_branchBg $_git_modifiedFg $_git_modifiedBg
 	fi
 
 	if [[ $untracked -gt 0 ]]; then
-		lastbg=$bg
-		bg=130
-		_arrow $lastbg $bg
-		_setCol 254
-		printf "\uf071%d" "$untracked"
+		_chain $_arrowR "\uf071$untracked" $_git_modifiedBg $_git_untrackedFg $_git_untrackedBg
 	fi
 
 	if [[ $untracked -eq 0 && $modified -eq 0 ]]; then
-		lastbg=$bg
-		bg=34
-		_arrow $lastbg $bg
-		_setCol 255
-		_pad '\uf00c'
+		_chain $_arrowR "\uf00c" $_git_branchBg $_git_br_cleanFg $_git_br_cleanBg
 	fi
-
+: <<'COM3'
 	lastbg=$bg
 	bg=$exitbg
 	_arrow $lastbg $bg
+COM3
 }
