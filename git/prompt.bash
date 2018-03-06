@@ -51,7 +51,6 @@ __parse_git() {
 
 	local lastbranch="$(__git_last_branch)"
 	local branch="$(git branch 2>&1 | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/g')"
-: <<'COM'
 
 	if [[ "$lastbranch" != "$branch" ]]; then
 		__git_last_branch $branch
@@ -63,7 +62,6 @@ __parse_git() {
 			__git_has_remote false
 		fi
 	fi
-COM
 
 	local git_sb=$(git status -sb --porcelain=v1 2>&1)
 	local modified=$(echo "$git_sb" | grep '^.M' | wc -l)
