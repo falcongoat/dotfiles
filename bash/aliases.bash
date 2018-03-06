@@ -20,6 +20,7 @@
 	alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 	alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
 	cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
+
 : <<'MAC'
 	mcd () { mkdir -p "$1" && cd "$1"; }        # mcd:          Makes new Dir and jumps inside
 	trash () { command mv "$@" ~/.Trash ; }     # trash:        Moves a file to the MacOS trash
