@@ -46,8 +46,8 @@ __git_has_remote() {
 }
 
 __parse_git() {
-	local lastbg=${1:-233}
-	local exitbg=${2:-237}
+	local inbg=${1:-233}
+	local outbg=${2:-237}
 
 	local lastbranch="$(__git_last_branch)"
 	local branch="$(git branch 2>&1 | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/g')"
@@ -71,17 +71,9 @@ __parse_git() {
 	lastbg="$_git_branchBg"
 
 	if [[ ${diffs[0]} -gt 0 || ${diffs[1]} -gt 0 ]]; then
-		_chain $_arrowR "\uf448${diffs[0]}" $lastbg $_git_originFg $_git_originBg
-		printf "\uf077%d" "${diffs[1]}"
-
-
-		#lastbg=$bg
-		#bg=28
-		#_arrow $lastbg $bg
-		#_setCol 214
-		#printf "\uf078%d\u0020" "${diffs[0]}"
-		#_setCol 190
-		#printf "\uf077%d" "${diffs[1]}"
+		_chain $_arrowR "\uf078${diffs[0]}" $lastbg $_git_originFg $_git_originBg
+		printf "%s\uf077%d" "$(__fg 190)" "${diffs[1]}"
+		lastbg=$_git_originBg
 	fi
 
 	if [[ $modified -gt 0 ]]; then

@@ -9,7 +9,7 @@ __funkybash() {
 	PS1+="$(_chain     $_arrowR $(__at)   $_userBg $_atFg   $_atBg)"
 	PS1+="$(_chain     $_arrowR $(__host) $_atBg   $_hostFg $_hostBg)"
 	PS1+="$(_chain_inv $_pillL  $(__base) $_hostBg $_pathFg $_pathBg)"
-	PS1+="$(__git_ps1)"
+	PS1+="$(__git_ps1 $_pathBg)"
 	#PS1+=$(_base)
 	#PS1+=$(__git_ps1 233 237)
 	#PS1+=$(_tip $EXIT)
