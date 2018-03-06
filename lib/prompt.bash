@@ -1,4 +1,6 @@
-. $SCRIPTPATH/lib/colors.bash
+source $SCRIPTPATH/lib/colors.bash
+source $SCRIPTPATH/lib/prompt.chains.bash
+source $SCRIPTPATH/git/prompt.bash
 
 __funkybash() {
 	local EXIT_STATUS="$?"      # This has to happen first
@@ -12,30 +14,6 @@ __funkybash() {
 	#PS1+=$(_tip $EXIT)
 	PS1+="\[\e$DEFAULT\]"
 }
-
-#	Functions
-#	..........................................................................
-	_chain() {
-		local glyph="$1"
-		local element="$2"
-		local bg_old="$3"
-		local fg_new="$4"
-		local bg_new="$5"
-		printf "%s%b%s%b" "$(_setCol $bg_old $bg_new)" "$glyph" "$(_setCol $fg_new $bg_new)" "$element"
-	}
-	_chain_inv() {
-		local glyph="$1"
-		local element="$2"
-		local bg_old="$3"
-		local fg_new="$4"
-		local bg_new="$5"
-		printf "%s%b%s%b" "$(_setCol $bg_new $bg_old)" "$glyph" "$(_setCol $fg_new $bg_new)" "$element"
-	}
-	_setCol() {
-		local fg="$(__fg $1 1)"
-		local bg="$(__bg $2 1)"
-		printf "%b" "$fg$bg"
-	}
 
 #	Elements
 #	..........................................................................

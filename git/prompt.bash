@@ -1,4 +1,5 @@
-. $SCRIPTPATH/bash/colors.bash
+source $SCRIPTPATH/lib/colors.bash
+source $SCRIPTPATH/lib/prompt.chains.bash
 
 __git_ps1() {
 	if [[ -d ./.git ]]; then
@@ -17,11 +18,11 @@ __git_last_branch() {
 	if [[ "$1" != "" ]]; then
 		echo "$1" > "$storage"
 	else
-		if [ ! -f "$storage" ]; then 
+		if [ ! -f "$storage" ]; then
 			value=""
 		else
-	  	value=$(cat "$storage")
-	  fi
+		  	value=$(cat "$storage")
+		fi
 		printf "${value}"
 	fi
 }
@@ -33,11 +34,11 @@ __git_has_remote() {
 	if [[ "$1" != "" ]]; then
 		echo "$1" > "$storage"
 	else
-		if [ ! -f "$storage" ]; then 
+		if [ ! -f "$storage" ]; then
 			value=""
 		else
-	  	value=$(cat "$storage")
-	  fi
+	  		value=$(cat "$storage")
+	 	fi
 		printf "${value}"
 	fi
 }
@@ -67,16 +68,16 @@ __parse_git() {
 	local bg=22
 	_tri_close $lastbg $bg
 	_setCol 254
-	printf "\uf418\u0020${branch}" 
+	printf "\uf418\u0020${branch}"
 
 	if [[ ${diffs[0]} -gt 0 || ${diffs[1]} -gt 0 ]]; then
 		lastbg=$bg
 		bg=28
 		_arrow $lastbg $bg
 		_setCol 214
-		printf "\uf078%d\u0020" "${diffs[0]}" 
-		_setCol 190 
-		printf "\uf077%d" "${diffs[1]}" 
+		printf "\uf078%d\u0020" "${diffs[0]}"
+		_setCol 190
+		printf "\uf077%d" "${diffs[1]}"
 	fi
 
 	if [[ $modified -gt 0 ]]; then
