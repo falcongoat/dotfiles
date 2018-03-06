@@ -1,3 +1,4 @@
+source $SCRIPTPATH/config.bash
 source $SCRIPTPATH/lib/colors.bash
 source $SCRIPTPATH/lib/prompt.chains.bash
 source $SCRIPTPATH/git/prompt.bash
@@ -5,9 +6,12 @@ source $SCRIPTPATH/git/prompt.bash
 __funkybash() {
 	local EXIT_STATUS="$?"      # This has to happen first
 	PS1="$(_chain_inv $_pillL   $(__user) $_termBg $_userFg $_userBg)"
-	#PS1+=""
-	PS1+="$(_chain     $_arrowR $(__at)   $_userBg $_atFg   $_atBg)"
-	PS1+="$(_chain     $_arrowR $(__host) $_atBg   $_hostFg $_hostBg)"
+
+	if [[ "$DISPLAY_HOSTNAME" == "true" ]]; then
+		PS1+="$(_chain     $_arrowR $(__at)   $_userBg $_atFg   $_atBg)"
+		PS1+="$(_chain     $_arrowR $(__host) $_atBg   $_hostFg $_hostBg)"
+	fi
+
 	PS1+="$(_chain_inv $_pillL  $(__base) $_hostBg $_pathFg $_pathBg)"
 	PS1+="$(__git_ps1 $_pathBg)"
 	#PS1+=$(_base)
