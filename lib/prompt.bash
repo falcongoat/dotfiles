@@ -50,13 +50,15 @@ __funkybash() {
 	}
 	__base() {
 		local path="$(pwd)"
-		local path_dirs
-		OIFS=$IFS
-		IFS='/'
-		read -ra path_dirs <<< $(echo $path)
-		IFS=$OIFS
+		path=${path/$HOME/"~"}
+		local pathdirs=(${path//\// })
 
-		printf "$(pwd)"
+		if [[ $(( ${#pathdirs[@]} -1 )) -gt 2 ]]; then
+			path="${pathdirs[0]}/${pathdirs[1]}/.../${pathdirs[-1]}"
+			[[ ${pathdirs[0]} != ~* ]] && path="/$path"
+		fi
+
+		printf "$path"
 	}
 
 
