@@ -12,9 +12,6 @@
 #	Change Prompt
 #	..........................................................................
 
-	. $SCRIPTPATH/bash/prompt.bash
-
-    PROMPT_COMMAND=powerline
 
 
 #	Set paths

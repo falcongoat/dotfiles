@@ -31,3 +31,4 @@
 #	Change Prompt
 #	..........................................................................
 	source $SCRIPTPATH/lib/prompt.bash
+    PROMPT_COMMAND=__funkybash
