@@ -39,7 +39,7 @@ colors256() {
 	printf "Colors 16 to 231 for 256 colors\n"
 	for c in {16..231}; do
 		_colorRows $c 36 15
-	done	
+	done
 	printf "\n"
 
 	printf "Greyscale 232 to 255 for 256 colors\n"

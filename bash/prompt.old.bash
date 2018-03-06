@@ -1,16 +1,4 @@
-. $SCRIPTPATH/bash/colors.bash
 . $SCRIPTPATH/git/prompt.bash
-
-powerline() {
-	local EXIT="$?"
-	PS1=""
-	PS1+=$(_plTime) 
-	PS1+=$(_userHost)
-	PS1+=$(_base) 
-	PS1+=$(__git_ps1 233 237)
-	PS1+=$(_tip $EXIT) 
-	PS1+=$defaultTermCol
-}
 
 _setCol() {
 	local col="\[\e[$(tput setaf $1)"
@@ -27,9 +15,9 @@ _plTime() {
 
 _userHost() {
 	_pill_open 236 21
-	_setCol 252 236 
+	_setCol 252 236
 	printf "%s" '\u'
-	_setCol 250 
+	_setCol 250
 	printf '@'
 	_setCol 248
 	printf '\h'
@@ -58,13 +46,13 @@ _tip() {
 	local bg=237
 	[[ $1 -gt 0 ]] && bg=88
 	#_arrow 28 $bg
-	_setCol 250 $bg 
+	_setCol 250 $bg
 	_pad "$"
 	_arrow $bg 0
 }
 
 _pad(){
-	printf "\u0020${1}\u0020" 
+	printf "\u0020${1}\u0020"
 }
 _arrow() {
 	printf "%b\uE0B0" "$(_setCol $1 $2)"
