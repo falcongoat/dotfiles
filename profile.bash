@@ -17,3 +17,12 @@ STORAGE="/tmp/.powerline"
 [ ! -d "$STORAGE" ] && mkdir "$STORAGE" > /dev/null
 echo rm -rf "${STORAGE}/*"
 
+
+#	-----------------------------
+#	02. ENVIRONMENT CONFIGURATION
+#	-----------------------------
+
+#   Add color to terminal
+export TERM=xterm-256color
+export CLICOLOR=$TERM
+source $SCRIPTPATH/lib/colors.bash
