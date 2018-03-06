@@ -1,10 +1,3 @@
-export BOLD=$(tput bold)
-export DEFAULT=$(tput sgr0)
-export BLINK=$(tput blink)
-export REVERSE=$(tput smso)
-export UNDERLINE=$(tput smul)
-
-
 export black="\[\e[38;5;16m\]"
 export black_bg="\[\e[48;5;16m\]"
 export gray_light="\[\e[38;5;253m\]"

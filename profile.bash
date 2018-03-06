@@ -12,6 +12,8 @@ else
 	SCRIPTPATH="$(dirname $0)"              # called directly
 fi 
 
-#	Create variable storage if not present
-[ ! -d "/tmp/.powerline" ] && mkdir /tmp/.powerline > /dev/null
+#	Create variable storage if not present & clear it
+STORAGE="/tmp/.powerline"
+[ ! -d "$STORAGE" ] && mkdir "$STORAGE" > /dev/null
+echo rm -rf "${STORAGE}/*"
 
