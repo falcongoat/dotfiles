@@ -18,6 +18,15 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 _eO='\[\e'
 _eC='\]'
 
+__sf() {
+	local color="$(tput setaf $1)"
+	[[ "$2" != "" ]] && color=$(__esc "$color")
+	printf "%b" "$color"
+}
+__sb() {
+	local color="$1"
+	printf "%b" "$(tput setab $color)"
+}
 __fg() {
 	local format="%s"
 	[[ "$2" != "" ]] && format=$(__esc "$format")
