@@ -32,3 +32,8 @@
 #	..........................................................................
 	source $SCRIPTPATH/lib/prompt.bash
     PROMPT_COMMAND=__funkybash
+
+#	Aliases
+#	..........................................................................
+
+	. $SCRIPTPATH/bash/aliases.bash

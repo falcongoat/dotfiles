@@ -62,18 +62,13 @@ __funkybash() {
 	}
 
 
-#	Icons
+#	Glyphs
 #	..........................................................................
 	_arrowR='\uE0B0'
 	_arrowL='\uE0B2'
 	_arrow2R='\uE0D4'
 	_pillL='\uE0B6'
-	_arrowL() {
-		printf "%b\uE0B2" "$(_setCol $1 $2)"
-	}
-	_pill_close() {
-		printf "%b\uE0B4" "$(_setCol $1 $2)"
-	}
+	_pillR="\uE0B4"
 
 #	Colorscheme
 #	..........................................................................
